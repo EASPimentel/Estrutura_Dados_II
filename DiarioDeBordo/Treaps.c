@@ -127,15 +127,55 @@ int main()
     for(int i = 0; i < size; i++){
         root = Insert(root,numbers[i]);
     }
+    int chose;
+    printf("Choose an option:\n");
+    printf("0 - To quit;\n");
+    printf("1 - To print in order;\n");
+    printf("2 - To print Pre-Order;\n");
+    printf("3 - To Pos-Order;\n");
+    printf("4 - Search a number;\n");
+    printf("5 - Delete a number\n");
+    scanf("%d",&chose);
 
+    switch(chose){
+    case 0:
+        printf("Have a nice day!");
+        break;
+    case 1:
+        PrintInOrder(root);
+        break;
+    case 2:
+        PrintPreOrder(root);
+        break;
+    case 3:
+        PrintPosOrder(root);
+        break;
+    case 4:{
+        int toSearch;
+        printf("Enter a number to Search\n");
+        scanf("\n%d", &toSearch);
+        Node* search = Search(root,toSearch);
+        if(search != NULL)
+            printf("Result: key: %d, Priority: %d\n", search->key,search->priority);
+        else
+            printf("Not found. F");
+    }
+        break;
 
-    PrintPosOrder(root);
-
-    Node* search = Search(root,55);
-    if(search != NULL)
-        printf("Result: key: %d, Priority: %d\n", search->key,search->priority);
-    else
-        printf("F");
+    case 5:
+        {
+        PrintInOrder(root);
+        int toDelete;
+        printf("Choose a number to delete\n");
+        scanf("\n%d", &toDelete);
+        root = DeleteNode(root,toDelete);
+        PrintInOrder(root);
+    }
+        break;
+    default:
+        printf("Wrong choice. F");
+        break;
+    }
 
     return 0;
 }
