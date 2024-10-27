@@ -121,17 +121,12 @@ int main()
 
     Node* root = NULL;
 
-    root = Insert(root,5);
-    root = Insert(root,6);
-    root = Insert(root,12);
-    root = Insert(root,55);
-    root = Insert(root,23);
-    root = Insert(root,2);
-    root = Insert(root,32);
-    root = Insert(root,17);
-    root = Insert(root,40);
-    root = Insert(root,9);
+    int numbers[]={5,6,12,55,23,2,32,17,40,9,99};
+    int size = sizeof(numbers)/sizeof(numbers[0]);
 
+    for(int i = 0; i < size; i++){
+        root = Insert(root,numbers[i]);
+    }
 
 
     PrintPosOrder(root);
